@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:customrenderers="clr-namespace:JewelleryStore.CustomRenderers"
+             mc:Ignorable="d" x:Class="JewelleryStore.Pages.EstimationPage"
+             x:Name="EstimatePage"
+             BackgroundColor="#A5A5A5">
+     <Grid RowSpacing="20"  Padding="15,30,15,30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+             <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Text="{Binding SubTitle}"  Grid.Row ="0" TextColor="Black" FontSize="Small"  HorizontalTextAlignment="End"/>
+        <Grid BackgroundColor="Transparent" Grid.Row="1" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.45*" />
+                <ColumnDefinition Width="0.55*" />
+            </Grid.ColumnDefinitions>
+             <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
+            <Label Text="Gold Price (per gram)"  Grid.Column="0" TextColor="Black" FontSize="Small"  VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1"  Padding="0" HorizontalOptions="FillAndExpand">
+            <customrenderers:BorderLessEntry Keyboard="Numeric"  TextColor="Black"  PlaceholderColor="Transparent" FontSize="Small" Text="{Binding GoldPrice}"/>
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="2" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="0.45*" />
+                <ColumnDefinition Width="0.55*" />
+            </Grid.ColumnDefinitions>
+               <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
+            <Label Text="Weight (grams)"  Grid.Column="0" TextColor="Black" FontSize="Small"  VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1"  Padding="0" HorizontalOptions="FillAndExpand">
+            <customrenderers:BorderLessEntry Keyboard="Numeric"  TextColor="Black"  PlaceholderColor="Transparent" FontSize="Small" Text="{Binding Weight}" />
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="3"  ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.45*" />
+                 <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="0.15*" />
+            </Grid.ColumnDefinitions>
+               <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
+            <Label Text="Total Price"  Grid.Column="0" TextColor="Black" FontSize="Small"  VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='8,0,5,2', iOS='8,0,5,0'}" Padding="0" >
+            <!--<customrenderers:BorderLessEntry Keyboard="Numeric"  TextColor="Black" IsEnabled="False" PlaceholderColor="Transparent" FontSize="Small" Text="{Binding TotalPrice}" />-->
+            <Label   TextColor="Black"  FontSize="Small" Padding="8"  Text="{Binding TotalPrice}" />
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="4" IsVisible="{Binding isDiscountVisible}" ColumnSpacing="10" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+               <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
+            <Label Text="Discount %"  Grid.Column="0" TextColor="Black" FontSize="Small"  VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1" HorizontalOptions="FillAndExpand"  Padding="2,0,2,0" >
+            <customrenderers:BorderLessEntry  Keyboard="Numeric" TextColor="Black" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#D0CFCE" IsEnabled="False" PlaceholderColor="Transparent" FontSize="Medium" Text="2 %" />
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="5" ColumnSpacing="10" HorizontalOptions="CenterAndExpand" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+               <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+                 </Grid.RowDefinitions>
+           <customrenderers:CustomButton Text="Calculate"  FontSize="Small" TextColor="White" Grid.Column="0" Padding="2" CornerRadius="6" Margin="{OnPlatform Android='8,0,0,2', iOS='8,0,0,0'}" Command="{Binding Source={x:Reference EstimatePage}, Path=BindingContext.CalculateCommand}" CommandParameter="{Binding .}" FontAttributes="Bold" BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+            <customrenderers:CustomButton Text="Print to Screen" FontSize="Small" TextColor="White" Grid.Column="1"  Padding="2" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference EstimatePage}, Path=BindingContext.PrintToScreenCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+             <customrenderers:CustomButton Text="Print to file"  FontSize="Small" TextColor="White" Grid.Column="2" Padding="2" CornerRadius="6" Margin="{OnPlatform Android='8,0,0,2', iOS='8,0,0,0'}" Command="{Binding Source={x:Reference EstimatePage}, Path=BindingContext.PrintToFileCommand}" CommandParameter="{Binding .}" FontAttributes="Bold" BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+            <customrenderers:CustomButton Text="Print to paper" FontSize="Small" TextColor="White" Grid.Column="3"  Padding="2" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference EstimatePage}, Path=BindingContext.PrintToPaperCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+         </Grid>
+       <customrenderers:CustomButton Grid.Row="6" Text="Close" FontSize="Small" TextColor="White"   Padding="5" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference EstimatePage}, Path=BindingContext.CloseCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+    </Grid>
+    </ContentPage>

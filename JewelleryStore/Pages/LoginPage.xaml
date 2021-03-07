@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:customrenderers="clr-namespace:JewelleryStore.CustomRenderers"
+             mc:Ignorable="d" x:Class="JewelleryStore.Pages.LoginPage"
+             xmlns:resources="clr-namespace:JewelleryStore.Helper.Resources"
+             x:Name="Loginpage"
+             BackgroundColor="White">
+    <Grid RowSpacing="20" Margin="20,0,20,0" BackgroundColor="#A5A5A5" Padding="15,30,15,30"
+          VerticalOptions="CenterAndExpand">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="Transparent" Grid.Row="0" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{x:Static resources:StringResources.UserNameText}" Grid.Column="0" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1" Margin="24,0,0,0"  Padding="0" HorizontalOptions="FillAndExpand">
+            <customrenderers:BorderLessEntry   TextColor="Black"  PlaceholderColor="Transparent" FontSize="Medium" Text="{Binding UserName}"/>
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="1" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Password"  Grid.Column="0" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+            <Frame BorderColor="#48505D" Grid.Column="1" Margin="24,0,0,0"  Padding="0" HorizontalOptions="FillAndExpand">
+            <customrenderers:BorderLessEntry   TextColor="Black" IsPassword="True" PlaceholderColor="Transparent" FontSize="Medium" Text="{Binding Password}"/>
+            </Frame>
+            </Grid>
+
+         <Grid BackgroundColor="Transparent" Grid.Row="2" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+           <customrenderers:CustomButton Text="Login"  FontSize="Medium" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.LoginCommand}" CommandParameter="{Binding .}" TextColor="White" Grid.Column="0"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='8,0,0,2', iOS='8,0,0,0'}" FontAttributes="Bold" BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+            <customrenderers:CustomButton Text="Cancel" FontSize="Medium" TextColor="White" Grid.Column="1"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.CancelCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+            </Grid>
+    </Grid>
+</ContentPage>
