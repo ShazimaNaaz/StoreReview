@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="Password"  Grid.Column="0" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+            <Label Text="{x:Static resources:StringResources.PasswordText}"  Grid.Column="0" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalTextAlignment="Center"/>
             <Frame BorderColor="#48505D" Grid.Column="1" Margin="24,0,0,0"  Padding="0" HorizontalOptions="FillAndExpand">
             <customrenderers:BorderLessEntry   TextColor="Black" IsPassword="True" PlaceholderColor="Transparent" FontSize="Medium" Text="{Binding Password}"/>
             </Frame>
@@ -42,8 +42,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-           <customrenderers:CustomButton Text="Login"  FontSize="Medium" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.LoginCommand}" CommandParameter="{Binding .}" TextColor="White" Grid.Column="0"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='8,0,0,2', iOS='8,0,0,0'}" FontAttributes="Bold" BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
-            <customrenderers:CustomButton Text="Cancel" FontSize="Medium" TextColor="White" Grid.Column="1"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.CancelCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+           <customrenderers:CustomButton Text="{x:Static resources:StringResources.LoginText}"  FontSize="Medium" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.LoginCommand}" CommandParameter="{Binding .}" TextColor="White" Grid.Column="0"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='8,0,0,2', iOS='8,0,0,0'}" FontAttributes="Bold" BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
+            <customrenderers:CustomButton Text="{x:Static resources:StringResources.CancelText}" FontSize="Medium" TextColor="White" Grid.Column="1"  Padding="5" CornerRadius="6" Margin="{OnPlatform Android='11,0,5,2', iOS='11,0,5,0'}" Command="{Binding Source={x:Reference Loginpage}, Path=BindingContext.CancelCommand}" CommandParameter="{Binding .}" FontAttributes="Bold"  BackgroundColor="#777070" BorderColor="Black" BorderWidth="1"/>
             </Grid>
     </Grid>
 </ContentPage>

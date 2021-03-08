@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{B1040AEB-7D03-499D-8FB8-58DA77AE2458}|Default">
+  <MonoDevelop.Ide.ItemProperties.JewelleryStore.Android PreferredExecutionTarget="Android.galaxy_nexus_pie_9_0_-_api_28" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="JewelleryStore/Service/EstimationService/IPrintService.cs">
+    <Files>
+      <File FileName="JewelleryStore/PageModels/EstimationPageModel.cs" Line="50" Column="72" />
+      <File FileName="JewelleryStoreUnitTest/LoginPageUnitTest.cs" Line="40" Column="1" />
+      <File FileName="JewelleryStore/PageModels/LoginPageModel.cs" Line="53" Column="69" />
+      <File FileName="JewelleryStore/Service/LoginService.cs" Line="42" Column="71" />
+      <File FileName="JewelleryStoreUnitTest/EstimationPageUnitTest.cs" Line="32" Column="31" />
+      <File FileName="JewelleryStore/Service/EstimationService/IPrintService.cs" Line="8" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="JewelleryStore" expanded="True">
+            <Node name="JewelleryStore" expanded="True">
+              <Node name="Service" expanded="True">
+                <Node name="EstimationService" expanded="True">
+                  <Node name="IPrintService.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

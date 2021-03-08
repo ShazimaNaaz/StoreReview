@@ -16,6 +16,15 @@
   <data name="UserNameText" xml:space="preserve">
     <value>Username</value>
   </data>
+    <data name="PasswordText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+     <data name="LoginText" xml:space="preserve">
+    <value>Login</value>
+  </data>
+     <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="GoldPriceConstant" xml:space="preserve">
     <value>Gold price (per gram)</value>
   </data>
@@ -28,4 +37,58 @@
   <data name="DiscountConstant" xml:space="preserve">
     <value>Discount %</value>
   </data>
+     <data name="CalculateConstant" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+     <data name="PrinttoScreenConstant" xml:space="preserve">
+    <value>Print to Screen</value>
+  </data>
+     <data name="PrinttofileConstant" xml:space="preserve">
+    <value>Print to file</value>
+  </data>
+     <data name="PrinttoPaperConstant" xml:space="preserve">
+    <value>Print to paper</value>
+  </data>
+    
+     <data name="WelcomeConstant" xml:space="preserve">
+    <value>Welcome :</value>
+  </data>
+     <data name="UserConstant" xml:space="preserve">
+    <value> User</value>
+  </data>
+     <data name="PrevilegedConstant" xml:space="preserve">
+    <value>Previleged</value>
+  </data>
+     <data name="ValidInputsConstant" xml:space="preserve">
+    <value>Please enter valid inputs</value>
+  </data>
+     <data name="PriceWeightConstant" xml:space="preserve">
+    <value>Price and Weight</value>
+  </data>
+    <data name="CloseConstant" xml:space="preserve">
+    <value>Close</value>
+  </data>
+    <data name="SavedToFileConstant" xml:space="preserve">
+    <value>Saved to a file</value>
+  </data>
+    <data name="OkayConstant" xml:space="preserve">
+    <value>Okay</value>
+  </data>
+    <data name="BillingConstant" xml:space="preserve">
+    <value>Your total amount for the gold purchased is</value>
+  </data>
+    <data name="LoginErrorConstant" xml:space="preserve">
+    <value>Invalid credentials</value>
+  </data>
+     <data name="LoginErrorConstant" xml:space="preserve">
+    <value>Invalid credentials</value>
+  </data>
+     <data name="LoginErrorMessageConstant" xml:space="preserve">
+    <value>Please enter valid Username and password</value>
+  </data>
+     <data name="LoginErrorConstant" xml:space="preserve">
+    <value>Invalid credentials</value>
+  </data>
+  
+    
 </root>

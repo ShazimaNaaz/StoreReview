@@ -53,6 +53,24 @@ namespace JewelleryStore.Helper.Resources {
             }
         }
         
+        internal static string PasswordText {
+            get {
+                return ResourceManager.GetString("PasswordText", resourceCulture);
+            }
+        }
+        
+        internal static string LoginText {
+            get {
+                return ResourceManager.GetString("LoginText", resourceCulture);
+            }
+        }
+        
+        internal static string CancelText {
+            get {
+                return ResourceManager.GetString("CancelText", resourceCulture);
+            }
+        }
+        
         internal static string GoldPriceConstant {
             get {
                 return ResourceManager.GetString("GoldPriceConstant", resourceCulture);
@@ -74,6 +92,96 @@ namespace JewelleryStore.Helper.Resources {
         internal static string DiscountConstant {
             get {
                 return ResourceManager.GetString("DiscountConstant", resourceCulture);
+            }
+        }
+        
+        internal static string CalculateConstant {
+            get {
+                return ResourceManager.GetString("CalculateConstant", resourceCulture);
+            }
+        }
+        
+        internal static string PrinttoScreenConstant {
+            get {
+                return ResourceManager.GetString("PrinttoScreenConstant", resourceCulture);
+            }
+        }
+        
+        internal static string PrinttofileConstant {
+            get {
+                return ResourceManager.GetString("PrinttofileConstant", resourceCulture);
+            }
+        }
+        
+        internal static string PrinttoPaperConstant {
+            get {
+                return ResourceManager.GetString("PrinttoPaperConstant", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomeConstant {
+            get {
+                return ResourceManager.GetString("WelcomeConstant", resourceCulture);
+            }
+        }
+        
+        internal static string UserConstant {
+            get {
+                return ResourceManager.GetString("UserConstant", resourceCulture);
+            }
+        }
+        
+        internal static string PrevilegedConstant {
+            get {
+                return ResourceManager.GetString("PrevilegedConstant", resourceCulture);
+            }
+        }
+        
+        internal static string ValidInputsConstant {
+            get {
+                return ResourceManager.GetString("ValidInputsConstant", resourceCulture);
+            }
+        }
+        
+        internal static string PriceWeightConstant {
+            get {
+                return ResourceManager.GetString("PriceWeightConstant", resourceCulture);
+            }
+        }
+        
+        internal static string CloseConstant {
+            get {
+                return ResourceManager.GetString("CloseConstant", resourceCulture);
+            }
+        }
+        
+        internal static string SavedToFileConstant {
+            get {
+                return ResourceManager.GetString("SavedToFileConstant", resourceCulture);
+            }
+        }
+        
+        internal static string OkayConstant {
+            get {
+                return ResourceManager.GetString("OkayConstant", resourceCulture);
+            }
+        }
+        
+        internal static string BillingConstant {
+            get {
+                return ResourceManager.GetString("BillingConstant", resourceCulture);
+            }
+        }
+        
+        internal static string LoginErrorConstant {
+            get {
+                return ResourceManager.GetString("LoginErrorConstant", resourceCulture);
+            }
+        }
+        
+        internal static string LoginErrorMessageConstant {
+            get {
+                return ResourceManager.GetString("LoginErrorMessageConstant", resourceCulture);
             }
         }
     }

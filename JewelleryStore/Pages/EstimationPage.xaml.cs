@@ -10,6 +10,7 @@ namespace JewelleryStore.Pages
         public EstimationPage()
         {
             InitializeComponent();
+            this.Title = "Estimation";
         }
     }
 }

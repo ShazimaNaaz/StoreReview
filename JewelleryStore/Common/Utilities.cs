@@ -18,15 +18,6 @@ namespace JewelleryStore.Common
                 File.WriteAllLines(fileName, billDetails);
 
                 var text = File.ReadAllLines(fileName);
-                //var isExist = File.Exists(fileName);
-                //if (isExist)
-                //{
-                //    File.Delete(fileName);
-                //}
-                //else
-                //{
-
-                //}
                 
                 if(text !=null)
                 {

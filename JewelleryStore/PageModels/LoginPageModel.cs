@@ -21,6 +21,7 @@ namespace JewelleryStore.PageModels
     [AddINotifyPropertyChangedInterface]
     public class LoginPageModel : FreshBasePageModel
     {
+        #region properties, fields
         IloggerService _logger;
         ILoginService _loginAuth;
 
@@ -28,12 +29,17 @@ namespace JewelleryStore.PageModels
         public string Password { get; set; }
         public string UserType { get; set; }
 
+        public string CloseConstant = Helper.Resources.StringResources.CloseConstant;
+        public string LoginErrorConstant = Helper.Resources.StringResources.LoginErrorConstant;
+        public string LoginErrorMessageConstant = Helper.Resources.StringResources.LoginErrorMessageConstant;
+        #endregion
         public LoginPageModel(IloggerService loggerService, ILoginService loginService)
         {
             _logger = loggerService;
             _loginAuth = loginService;
         }
 
+        #region Commands
         public ICommand LoginCommand
         {
             get
@@ -54,7 +60,7 @@ namespace JewelleryStore.PageModels
                                 }
                                 else
                                 {
-                                    await CoreMethods.DisplayAlert("Invalid credentials", "Please enter valid Username and password", "Close");
+                                    await CoreMethods.DisplayAlert(LoginErrorConstant, LoginErrorMessageConstant, CloseConstant);
                                 }
                             }
                         }
@@ -87,5 +93,6 @@ namespace JewelleryStore.PageModels
                 });
             }
         }
+        #endregion
     }
 }

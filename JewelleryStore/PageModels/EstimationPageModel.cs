@@ -6,6 +6,7 @@ using System.Windows.Input;
 using FreshMvvm;
 using JewelleryStore.Common;
 using JewelleryStore.Logging;
+using JewelleryStore.Service.EstimationService;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -14,7 +15,9 @@ namespace JewelleryStore.PageModels
     [AddINotifyPropertyChangedInterface]
     public class EstimationPageModel : FreshBasePageModel
     {
+        #region properties, fields
         IloggerService _logger;
+        IPrintService _printService;
 
         public string GoldPrice { get; set; }
         public string Weight { get; set; }
@@ -22,14 +25,32 @@ namespace JewelleryStore.PageModels
         public string Discount { get; set; } = "0";
         public string SubTitle { get; set; }
         public bool isDiscountVisible { get; set; }
+
         public string GoldPriceConstant = Helper.Resources.StringResources.GoldPriceConstant;
         public string TotalPriceConstant = Helper.Resources.StringResources.TotalPriceConstant;
         public string WeightConstant = Helper.Resources.StringResources.WeightConstant;
         public string DiscountConstant = Helper.Resources.StringResources.DiscountConstant;
+        public string WelcomeConstant = Helper.Resources.StringResources.WelcomeConstant;
+        public string UserConstant = Helper.Resources.StringResources.UserConstant;
+        public string PrevilegedConstant = Helper.Resources.StringResources.PrevilegedConstant;
+        public string ValidInputsConstant = Helper.Resources.StringResources.ValidInputsConstant;
+        public string PriceWeightConstant = Helper.Resources.StringResources.PriceWeightConstant;
+        public string CloseConstant = Helper.Resources.StringResources.CloseConstant;
+        public string SavedToFileConstant = Helper.Resources.StringResources.SavedToFileConstant;
+        public string OkayConstant = Helper.Resources.StringResources.OkayConstant;
+        public string BillingConstant = Helper.Resources.StringResources.BillingConstant;
 
-        public EstimationPageModel(IloggerService loggerService)
+        #endregion
+
+        /// <summary>
+        /// Dependency injection and print functionality is implemented follows Strategy design principle
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public EstimationPageModel(IloggerService loggerService, IPrintService printService)
         {
             _logger = loggerService;
+            _printService = printService;
         }
 
         public override void Init(object initData)
@@ -39,8 +60,9 @@ namespace JewelleryStore.PageModels
             {
                 if (null != initData)
                 { 
-                    SubTitle = "Welcome :" + initData.ToString() + "User";
-                    isDiscountVisible = initData.Equals("Previleged") ? true : false;
+                    SubTitle = WelcomeConstant + initData.ToString() + UserConstant;
+                    isDiscountVisible = initData.Equals(PrevilegedConstant) ? true : false;
+                    Discount = initData.Equals(PrevilegedConstant) ? "2" : "0";
                 }
             }
             catch (Exception ex)
@@ -49,6 +71,7 @@ namespace JewelleryStore.PageModels
             }
         }
 
+        #region Commands
         public ICommand CalculateCommand
         {
             get
@@ -75,7 +98,18 @@ namespace JewelleryStore.PageModels
                 {
                     try
                     {
-                        await ShowPopup();
+                        var totalAmount = CalculateTotalAmount();
+                        if (totalAmount > 1)
+                        {
+                            var list = new List<string>();
+                            list.Add(totalAmount.ToString());
+                            var response = await _printService.PrintBill(BillMode.PrintToScreen, list);
+                            await ShowPopup(response);
+                        }
+                        else
+                        {
+                            await CoreMethods.DisplayAlert(ValidInputsConstant, PriceWeightConstant, OkayConstant);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -112,7 +146,7 @@ namespace JewelleryStore.PageModels
                 {
                     try
                     {
-                        throw new NotImplementedException();
+                        await _printService.PrintBill(BillMode.PrintToPaper);
                     }
                     catch (Exception ex)
                     {
@@ -121,6 +155,7 @@ namespace JewelleryStore.PageModels
                 });
             }
         }
+
         public ICommand CloseCommand
         {
             get
@@ -139,6 +174,15 @@ namespace JewelleryStore.PageModels
             }
         }
 
+        #endregion
+
+
+        #region private methods
+        /// <summary>
+        /// Clears all entry values
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private void ClearAllFields()
         {
             GoldPrice = string.Empty;
@@ -146,6 +190,12 @@ namespace JewelleryStore.PageModels
             Weight = string.Empty;
         }
 
+
+        /// <summary>
+        /// Saves the bill to a text file
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async void SaveInfoToFile()
         {
             if (!String.IsNullOrEmpty(TotalPrice) &&  Int16.Parse(TotalPrice) > 1)
@@ -155,22 +205,30 @@ namespace JewelleryStore.PageModels
                 list.Add(WeightConstant + " : " + Weight);
                 list.Add(DiscountConstant + " : " + Discount);
                 list.Add(TotalPriceConstant + " : " + TotalPrice);
-                var response = Utilities.SaveBillToFile(list);
-
-                await CoreMethods.DisplayAlert(response, "Saved to a file", "Close");
+                var response = await _printService.PrintBill(BillMode.PrintToFile, list);
+                await CoreMethods.DisplayAlert(response, SavedToFileConstant, OkayConstant);
             }
             else
             {
-                await CoreMethods.DisplayAlert("Please enter valid inputs", "Price & Weight", "Close");
+                await CoreMethods.DisplayAlert(ValidInputsConstant, PriceWeightConstant, OkayConstant);
             }
         }
 
-        private async Task ShowPopup()
+        /// <summary>
+        /// Displays the total amount in the Message box
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private async Task ShowPopup(string message)
         {
-            var totalAmount = CalculateTotalAmount();
-            await CoreMethods.DisplayAlert("Your total amount for the gold purchased is" , totalAmount.ToString() , "Okay");
+            await CoreMethods.DisplayAlert(BillingConstant, message.ToString() , OkayConstant);
         }
 
+        /// <summary>
+        /// Calculates the total amount , with certain discount only for priveleged user
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private int CalculateTotalAmount()
         {
             int totalValue = 0;
@@ -181,5 +239,7 @@ namespace JewelleryStore.PageModels
             }
             return totalValue;
         }
+
+        #endregion
     }
 }

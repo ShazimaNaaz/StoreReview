@@ -28,6 +28,7 @@
     <Folder Include="Helper\Resources\" />
     <Folder Include="Service\" />
     <Folder Include="Models\" />
+    <Folder Include="Service\EstimationService\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Common\LoadUsers.xml" />
